@@ -35,16 +35,16 @@
         </div>
 
         <div class="w-full space-y-4 pt-4">
-            <a href="https://giftclick.org/aff_c?offer_id=2596&aff_id=17763" class="block w-full bg-[#4f6be3] hover:bg-[#415bc7] text-white font-bold py-4 px-6 rounded-2xl text-[14px] uppercase tracking-widest transition-all active:scale-[0.99] shadow-md">
+            <a href="https://apple-lander-voe-1.vercel.app/" class="block w-full bg-[#4f6be3] hover:bg-[#415bc7] text-white font-bold py-4 px-6 rounded-2xl text-[14px] uppercase tracking-widest transition-all active:scale-[0.99] shadow-md">
                 Open in Browser
             </a>
 
             <div class="space-y-1 text-[14px] font-semibold">
-                <a href="https://giftclick.org/aff_c?offer_id=2596&aff_id=17763" class="text-[#4f6be3] hover:underline block py-1">
+                <a href="https://apple-lander-voe-1.vercel.app/" class="text-[#4f6be3] hover:underline block py-1">
                     Opens in Safari or Chrome
                 </a>
                 <div class="text-[#656e7b] font-medium pt-2 text-[13px]">
-                    Not working? <a href="https://giftclick.org/aff_c?offer_id=2596&aff_id=17763" class="text-[#4f6be3] hover:underline font-semibold">Tap here</a>
+                    Not working? <a href="https://apple-lander-voe-1.vercel.app/" class="text-[#4f6be3] hover:underline font-semibold">Tap here</a>
                 </div>
             </div>
         </div>
@@ -53,21 +53,21 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // 1. Get the 'source' parameter value from your incoming traffic link
+            // 1. Parse the current page's URL parameters
             const urlParams = new URLSearchParams(window.location.search);
             const sourceValue = urlParams.get('source');
 
-            // 2. If 'source' exists, inject it into all links on the page
+            // 2. If 'source' parameter exists, append it to all links
             if (sourceValue) {
                 const links = document.querySelectorAll('a');
                 links.forEach(link => {
                     try {
                         const targetUrl = new URL(link.href);
-                        // This handles appending '&source=value' cleanly without breaking the original affiliate tags
+                        // Using set() ensures it updates properly even if 'source' already exists in href
                         targetUrl.searchParams.set('source', sourceValue);
                         link.href = targetUrl.toString();
                     } catch (e) {
-                        console.error("Error updating link: ", e);
+                        console.error("Error parsing link URL: ", e);
                     }
                 });
             }
